@@ -2,15 +2,54 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background-color: #333; 
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.header-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.header-buttons button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; 
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header-buttons button:hover {
+  transition: .3s;
+  background-color: #0056b3;
+}
+
+.item {
+  background-color: rgb(231, 231, 231);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.item a:hover {
+  text-decoration: underline;
 }
 
 ul {
@@ -22,6 +61,7 @@ li {
   border-bottom: 1px solid #ccc; 
   padding: 10px 0; 
   margin-bottom: 10px; 
+  background-color: #f9f9f9; 
 }
 
 li img {
@@ -35,9 +75,20 @@ li div {
 }
 
 li div.Title {
-  font-size: 25spx; 
+  font-size: 25px;
 }
 
 li div.ID {
   font-size: 9px;
+}
+
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 14px; 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
