@@ -127,6 +127,23 @@ li div.ID {
   transition: .3s;
 }
 
+.buttonClear {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; 
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.buttonClear:hover {
+  background-color: rgb(143, 0, 0);
+  transition: .3s;
+}
+
 .image-container {
   display: flex;
   justify-content: center;

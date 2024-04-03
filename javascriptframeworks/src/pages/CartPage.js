@@ -25,8 +25,8 @@ function CartPage({ cartItems, setCartItems }) {
       </ul>
       <div>
         <h3>Total Price: ${totalPrice}</h3>
-        <button onClick={handleClearCart}>Clear Cart</button>
-        <button>Checkout</button>
+        <button className="buttonClear" onClick={handleClearCart}>Clear Cart</button>
+        <button className="button">Checkout</button>
       </div>
     </div>
   );
