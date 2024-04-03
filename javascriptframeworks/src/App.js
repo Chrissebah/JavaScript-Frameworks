@@ -10,6 +10,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -30,19 +31,22 @@ function App() {
     fetchItems();
   }, []);
 
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
+
   return (
     <Router>
       <div className="App">
-        <header className="header">
-          <div className="header-buttons">
-            <button>Button 1</button>
-            <button>Button 2</button>
-            <button>Button 3</button>
-          </div>
-        </header>
+              <header className="header">
+        <div className="header-buttons">
+          <button><Link to="/" className="button-link">Home</Link></button>
+          <button><Link to="/cart" className="button-link">Cart</Link></button>
+        </div>
+      </header>
         <Routes>
           {/* Route for the item details page */}
-          <Route path="/details/:detailId" element={<ItemDetailsPage />} />
+          <Route path="/details/:detailId" element={<ItemDetailsPage addToCart={addToCart} />} />
           {/* Route for the main content */}
           <Route
             path="/"
@@ -70,8 +74,9 @@ function App() {
               </main>
             }
           />
-          {/* Other routes for cart, checkout, etc. */}
-          <Route path="/cart" element={<CartPage />} />
+          {/* Other routes */}
+          <Route path="/cart" element={<CartPage cartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
           <Route path="/checkout" element={<CheckoutSuccess />} />
         </Routes>
         <footer className="footer">

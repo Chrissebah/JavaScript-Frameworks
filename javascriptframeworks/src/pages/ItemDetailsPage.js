@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-function ItemDetailsPage() {
+function ItemDetailsPage({ addToCart }) {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,6 +27,12 @@ function ItemDetailsPage() {
     fetchItemDetails();
   }, [detailId]);
 
+  const handleAddToCart = () => {
+    if (item) {
+      addToCart(item); 
+    }
+  };
+
   return (
     <div>
       {loading ? (
@@ -38,10 +44,12 @@ function ItemDetailsPage() {
           <h2>{item.data.title}</h2>
           <p>Price: {item.data.price}</p>
           <p>Discounted Price: {item.data.discountedPrice}</p>
-          <p>Description: {item.data.description}</p>
+          <p>{item.data.description}</p>
           {item.data.image && (
             <img src={item.data.image.url} alt={item.data.title} />
           )}
+          <p>Overall Rating: {item.data.rating}</p>
+          <button className="button" onClick={handleAddToCart}>Add to Cart</button>
         </div>
       )}
     </div>
