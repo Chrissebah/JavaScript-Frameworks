@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -12,6 +15,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0; 
+  font-family: Arial, sans-serif;
 }
 
 .main-content {
@@ -103,6 +107,8 @@ li div.ID {
   color: white;
   text-align: center;
   padding: 10px 0;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 .button {
@@ -119,4 +125,16 @@ li div.ID {
 .button:hover {
   background-color: darkblue; 
   transition: .3s;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
 }

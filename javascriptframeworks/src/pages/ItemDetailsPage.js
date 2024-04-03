@@ -46,7 +46,9 @@ function ItemDetailsPage({ addToCart }) {
           <p>Discounted Price: {item.data.discountedPrice}</p>
           <p>{item.data.description}</p>
           {item.data.image && (
-            <img src={item.data.image.url} alt={item.data.title} />
+            <div className="image-container">
+              <img src={item.data.image.url} alt={item.data.title} />
+            </div>
           )}
           <p>Overall Rating: {item.data.rating}</p>
           <button className="button" onClick={handleAddToCart}>Add to Cart</button>
