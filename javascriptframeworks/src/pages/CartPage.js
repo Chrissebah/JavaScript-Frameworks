@@ -9,7 +9,7 @@ function CartPage({ cartItems, setCartItems, clearCart }) {
     window.location.reload();
   };
 
-  // Check if cart is empty
+ 
   const isEmptyCart = cartItems.length === 0;
 
   return (

@@ -6,7 +6,7 @@ function CheckoutSuccess({ clearCart }) {
   const [orderNumber, setOrderNumber] = useState('');
 
   useEffect(() => {
-    // Function to generate a random 10-digit order number
+   
     const generateOrderNumber = () => {
       const min = 1000000000; 
       const max = 9999999999; 
@@ -14,7 +14,7 @@ function CheckoutSuccess({ clearCart }) {
       return randomNumber.toString();
     };
 
-    // Set the generated order number
+    
     setOrderNumber(generateOrderNumber());
   }, []);
 
