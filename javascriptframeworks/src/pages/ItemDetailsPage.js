@@ -50,6 +50,7 @@ function ItemDetailsPage({ addToCart }) {
               <img src={item.data.image.url} alt={item.data.title} />
             </div>
           )}
+          <div className="ID">ID: {item.data.id}</div>
           <p>Overall Rating: {item.data.rating}</p>
           <button className="button" onClick={handleAddToCart}>Add to Cart</button>
         </div>

@@ -35,15 +35,22 @@ function App() {
     setCartItems([...cartItems, item]);
   };
 
+  const handleClearCart = () => {
+    setCartItems([]);
+  };
   return (
     <Router>
       <div className="App">
-              <header className="header">
-        <div className="header-buttons">
-          <button><Link to="/" className="button-link">Home</Link></button>
-          <button><Link to="/cart" className="button-link">Cart</Link></button>
-        </div>
-      </header>
+        <header className="header">
+          <div className="header-buttons">
+              <Link to="/" className="button-link">
+          <button className="button">Home</button>
+        </Link>
+        <Link to="/cart" className="button-link">
+          <button className="button">Cart</button>
+        </Link>
+          </div>
+        </header>
         <Routes>
           {/* Route for the item details page */}
           <Route path="/details/:detailId" element={<ItemDetailsPage addToCart={addToCart} />} />
@@ -65,7 +72,6 @@ function App() {
                           <img src={item.image.url} alt={item.title} />
                           <div className='Price'>Full Price: {item.price}</div>
                           <div className='discountedPrice'>Discounted Price: {item.discountedPrice}</div>
-                          <div className="ID">ID: {item.id}</div>
                         </Link>
                       </li>
                     ))}
@@ -75,9 +81,14 @@ function App() {
             }
           />
           {/* Other routes */}
-          <Route path="/cart" element={<CartPage cartItems={cartItems} setCartItems={setCartItems} />} />
-          <Route path="/cart" element={<CartPage cartItems={cartItems} />} />
-          <Route path="/checkout" element={<CheckoutSuccess />} />
+          <Route
+            path="/cart"
+            element={<CartPage cartItems={cartItems} setCartItems={setCartItems} clearCart={handleClearCart} />} 
+          />
+          <Route
+            path="/checkout/:totalPrice"
+            element={<CheckoutSuccess clearCart={handleClearCart} />}
+          />
         </Routes>
         <footer className="footer">
           <p>&copy; 2024 My Online Shop</p>
