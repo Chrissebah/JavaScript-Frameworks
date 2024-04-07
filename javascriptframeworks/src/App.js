@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ItemDetailsPage from './pages/ItemDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutSuccess from './pages/CheckoutSuccess';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -46,6 +47,9 @@ function App() {
               <Link to="/" className="button-link">
           <button className="button">Home</button>
         </Link>
+        <Link to="/contact-us" className="button-link">
+          <button className="button">Contact Us</button>
+        </Link>
         <Link to="/cart" className="button-link">
           <button className="button">Cart</button>
         </Link>
@@ -85,6 +89,7 @@ function App() {
             path="/cart"
             element={<CartPage cartItems={cartItems} setCartItems={setCartItems} clearCart={handleClearCart} />} 
           />
+          <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="/checkout/:totalPrice"
             element={<CheckoutSuccess clearCart={handleClearCart} />}

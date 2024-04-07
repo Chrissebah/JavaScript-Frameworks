@@ -156,34 +156,43 @@ li div.ID {
   height: auto;
 }
 
-.checkout-success-container {
+.contact-container {
   text-align: center;
   margin-top: 50px;
 }
 
-.checkout-success-heading {
-  font-size: 24px;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-.checkout-success-text {
-  font-size: 18px;
+.input-container {
   margin-bottom: 20px;
-  color: #666;
 }
 
-.checkout-success-button {
-  padding: 10px 20px;
-  font-size: 16px;
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-container input,
+.input-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-container .input-field {
+  width: 90%; 
+  max-width: 400px; 
+}
+
+.button {
   background-color: #007bff;
   color: #fff;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.checkout-success-button:hover {
+.button:hover {
   background-color: #0056b3;
   transition: 0.3s;
 }
