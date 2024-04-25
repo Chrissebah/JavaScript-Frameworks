@@ -74,11 +74,10 @@ function ContactPage() {
               name="body"
               value={formData.body}
               onChange={handleChange}
-              minLength={10}
               required
               className="input-field"
             />
-            {formData.body.length < 10 && (
+            {formData.body.length < 10 && formData.body.length > 0 && (
               <p className="error-message">Minimum 10 characters required</p>
             )}
           </div>
