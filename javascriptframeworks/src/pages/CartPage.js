@@ -6,7 +6,6 @@ function CartPage({ cartItems, setCartItems, clearCart }) {
 
   const handleClearCart = () => {
     setCartItems([]);
-    window.location.reload();
   };
 
  
