@@ -6,6 +6,7 @@ import ItemDetailsPage from './pages/ItemDetailsPage';
 import CartPage from './pages/CartPage';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import ContactUs from './pages/ContactUs';
+import { FaShoppingCart } from 'react-icons/fa';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -18,7 +19,6 @@ function App() {
       try {
         setLoading(true);
         const response = await axios.get(`https://v2.api.noroff.dev/online-shop`);
-        console.log('Response from API:', response.data);
         setItems(response.data.data);
         setError(null);
       } catch (error) {
@@ -32,6 +32,11 @@ function App() {
     fetchItems();
   }, []);
 
+  useEffect(() => {
+    const cartItemCount = cartItems.length;
+    document.title = `My Online Shop${cartItemCount > 0 ? ` (${cartItemCount})` : ''}`;
+  }, [cartItems]);
+
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
   };
@@ -39,26 +44,28 @@ function App() {
   const handleClearCart = () => {
     setCartItems([]);
   };
+
   return (
     <Router>
       <div className="App">
         <header className="header">
           <div className="header-buttons">
-              <Link to="/" className="button-link">
-          <button className="button">Home</button>
-        </Link>
-        <Link to="/contact-us" className="button-link">
-          <button className="button">Contact Us</button>
-        </Link>
-        <Link to="/cart" className="button-link">
-          <button className="button">Cart</button>
-        </Link>
+            <Link to="/" className="button-link">
+              <button className="button">Home</button>
+            </Link>
+            <Link to="/contact-us" className="button-link">
+              <button className="button">Contact Us</button>
+            </Link>
+            <Link to="/cart" className="button-link">
+              <button className="button">
+                <FaShoppingCart /> {/* Icon for the cart */}
+                {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
+              </button>
+            </Link>
           </div>
         </header>
         <Routes>
-          {/* Route for the item details page */}
           <Route path="/details/:detailId" element={<ItemDetailsPage addToCart={addToCart} />} />
-          {/* Route for the main content */}
           <Route
             path="/"
             element={
@@ -74,8 +81,8 @@ function App() {
                         <Link to={`/details/${item.id}`}>
                           <div className="Title">{item.title}</div>
                           <img src={item.image.url} alt={item.title} />
-                          <div className='Price'>Full Price: {item.price}</div>
-                          <div className='discountedPrice'>Discounted Price: {item.discountedPrice}</div>
+                          <div className='Price'>Full Price: ${item.price}</div>
+                          <div className='discountedPrice'>Discounted Price: ${item.discountedPrice}</div>
                         </Link>
                       </li>
                     ))}
@@ -84,7 +91,6 @@ function App() {
               </main>
             }
           />
-          {/* Other routes */}
           <Route
             path="/cart"
             element={<CartPage cartItems={cartItems} setCartItems={setCartItems} clearCart={handleClearCart} />} 

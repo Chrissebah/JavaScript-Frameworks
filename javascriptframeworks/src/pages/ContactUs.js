@@ -63,6 +63,7 @@ function ContactPage() {
               value={formData.email}
               onChange={handleChange}
               required
+              minLength={3}
               className="input-field" 
             />
           </div>

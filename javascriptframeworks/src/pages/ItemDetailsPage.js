@@ -13,7 +13,6 @@ function ItemDetailsPage({ addToCart }) {
       try {
         setLoading(true);
         const response = await axios.get(`https://v2.api.noroff.dev/online-shop/${detailId}`);
-        console.log('Response from API:', response.data);
         setItem(response.data);
         setError(null);
       } catch (error) {
@@ -42,8 +41,8 @@ function ItemDetailsPage({ addToCart }) {
       ) : (
         <div>
           <h2>{item.data.title}</h2>
-          <p>Price: {item.data.price}</p>
-          <p>Discounted Price: {item.data.discountedPrice}</p>
+          <p>Price: ${item.data.price}</p>
+          <p>Discounted Price: ${item.data.discountedPrice}</p>
           <p>{item.data.description}</p>
           {item.data.image && (
             <div className="image-container">
@@ -52,6 +51,16 @@ function ItemDetailsPage({ addToCart }) {
           )}
           <div className="ID">ID: {item.data.id}</div>
           <p>Overall Rating: {item.data.rating}</p>
+          <h3>Reviews</h3>
+          <ul>
+            {item.data.reviews.map(review => (
+              <li key={review.id}>
+                <p>{review.username}</p>
+                <p>{review.description}</p>
+                <p>Rating: {review.rating}</p>
+              </li>
+            ))}
+          </ul>
           <button className="button" onClick={handleAddToCart}>Add to Cart</button>
         </div>
       )}
