@@ -5,7 +5,6 @@ function CartPage({ cartItems, setCartItems, clearCart }) {
   const totalPrice = cartItems.reduce((total, item) => total + item.data.discountedPrice, 0).toFixed(2);
 
   const handleClearCart = () => {
-    console.log("Clearing cart...");
     setCartItems([]);
   };
 

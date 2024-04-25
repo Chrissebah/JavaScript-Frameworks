@@ -16,8 +16,21 @@ function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if any of the fields are empty
+    if (!formData.fullName || !formData.subject || !formData.email || !formData.body) {
+      alert("Please fill in all the fields.");
+      return;
+    }
+
+    // Check if the body is at least 10 characters long
+    if (formData.body.length < 10) {
+      alert("Please provide a message with at least 10 characters.");
+      return;
+    }
+
+    // If all validations pass, proceed with form submission
     console.log(formData);
-   
     setSubmitted(true); 
   };
 
@@ -74,8 +87,8 @@ function ContactPage() {
               name="body"
               value={formData.body}
               onChange={handleChange}
-              minLength={3}
               required
+              minLength={10}
               className="input-field" 
             />
           </div>
