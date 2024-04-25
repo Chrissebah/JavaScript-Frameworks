@@ -5,6 +5,7 @@ function CartPage({ cartItems, setCartItems, clearCart }) {
   const totalPrice = cartItems.reduce((total, item) => total + item.data.discountedPrice, 0).toFixed(2);
 
   const handleClearCart = () => {
+    console.log("Clearing cart...");
     setCartItems([]);
   };
 
@@ -22,8 +23,8 @@ function CartPage({ cartItems, setCartItems, clearCart }) {
             {cartItems.map((item, index) => (
               <li key={index}>
                 <h3>{item.data.title}</h3>
-                <p>Price: {item.data.price}</p>
-                <p>Discounted Price: {item.data.discountedPrice}</p>
+                <p>Price: ${item.data.price}</p>
+                <p>Discounted Price: ${item.data.discountedPrice}</p>
               </li>
             ))}
           </ul>
